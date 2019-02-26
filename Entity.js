@@ -42,7 +42,7 @@ class Entity {
 				if (this.isAgent && this.agentManager.delay === 0) {
 				this.agentManager.delay = 20;
 				this.agentManager.update();
-				console.log(this.Ename);
+				//console.log(this.Ename);
 			}
 		}
 

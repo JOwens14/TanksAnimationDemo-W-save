@@ -14,8 +14,8 @@ function agentManager(entity) {
 
 agentManager.prototype.update = function () {
     this.selectTarget();
-    console.log(this.agent.Ename + "s target is " + this.target.Ename);
-    console.log(this.target.Ename + " is " + this.targetDist + " units away");
+    //console.log(this.agent.Ename + "s target is " + this.target.Ename);
+    //console.log(this.target.Ename + " is " + this.targetDist + " units away");
     this.move();
 };
 
@@ -164,17 +164,21 @@ agentManager.prototype.selectTarget = function () {
 ///////////////////////////////////////////////////////////////////////////////////////
 agentManager.prototype.right = function () {
         this.agent.go.dir = 1;
+        this.agent.right();
       }
 
 agentManager.prototype.left = function () {
         this.agent.go.dir = -1;
+        this.agent.left();
 }
 
 agentManager.prototype.up = function () {
         this.agent.vertical.dir = -1;
+        this.agent.up();
 }
 
 agentManager.prototype.down = function () {
         this.agent.vertical.dir = 1;
+        this.agent.down();
 }
 /////////////////////////////////////////////////////////////////////////////////////////

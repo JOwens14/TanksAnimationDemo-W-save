@@ -2,7 +2,6 @@
 var myCanvas;
 var myContext;
 
-
 function Start(canvas, context) {
   myCanvas = canvas;
   myContext = context;
@@ -15,32 +14,16 @@ function Start(canvas, context) {
   img.onload = function () {context.drawImage(img, 640 - 122, 360 - 73);}
   img.src = './Enviroment/TT-TanksLogo.png';
 
-
   //sound
   mainMusic = new sound('./sound/MainTheme.wav');
   mainMusic.sound.volume = .04; //main theme volume
   mainMusic.sound.loop = true; //loops the main theme
   mainMusic.play(); //plays the main theme
 
-  // // next screen --------------------
-  // screenNextHandler = function(e) {
-  //   var key = e.which || e.keyCode;
-  //   if(key === 13) { // 13 is enter
-  //     mainMusic.stop(); //stops the main music
-  //
-  //     StartCombat(canvas, context);
-  //     this.removeEventListener('keypress', screenNextHandler, false);
-  //   }
-  // };
-  // //move to the next scene
-  // this.addEventListener('keypress', screenNextHandler, false);
-  this.setTimeout(function() {
+  this.setTimeout(function() {       // timeout before combat begins
     StartCombat(canvas, context);
-  }, 3000);
-
-
+  }, 2000);
 }
-
 
 
 function StartCombat(canvas, context) {
@@ -52,11 +35,9 @@ function StartCombat(canvas, context) {
     });
 
     Promise.all([
-
       createTank('CPU-1', 1),
       createTank('CPU-2', 2),
       loadLevel(),
-
   ])
   .then(([T1, T2, level]) => {
       levelObject = level;
@@ -76,10 +57,7 @@ function StartCombat(canvas, context) {
       timer.update = function update(deltaTime) {
           level.update(deltaTime);
           level.comp.draw(context);
-
       }
-
       timer.start();
       });
-
 }
