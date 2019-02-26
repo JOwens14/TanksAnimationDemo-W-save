@@ -1,38 +1,15 @@
-/*
-* Kittens Main Method
-* Set up all things
-* load all assets here
-*/
 const deltaTime = 1/60; //FPS timer --- 1/60 is 60fps
 const killzone = 200; // Max distance from the edge of the screen that will trigger death
 var levelObject;
 var levelChoice;
 var CPUsEnabled = false;
 
-
 const ASSET_MANAGER = new AssetManager();
 //que all the asset files needed
-ASSET_MANAGER.queueDownload("./characters/Karate.png");
-ASSET_MANAGER.queueDownload("./characters/idleBig.png");
-ASSET_MANAGER.queueDownload("./effects/Damage.png");
-ASSET_MANAGER.queueDownload("./effects/Dust.png");
-ASSET_MANAGER.queueDownload("./characters/Archer.png");
-ASSET_MANAGER.queueDownload("./characters/Wizard.png");
-ASSET_MANAGER.queueDownload("./characters/Rogue.png");
-ASSET_MANAGER.queueDownload("./characters/Warrior.png");
-ASSET_MANAGER.queueDownload("./characters/Soldier.png");
-ASSET_MANAGER.queueDownload("./characters/Vagrant.png");
-ASSET_MANAGER.queueDownload("./characters/FatCat.png");
-ASSET_MANAGER.queueDownload("./characters/fatcatBig.png");
-ASSET_MANAGER.queueDownload("./Enviroment/PinkCitytiles.png");
-ASSET_MANAGER.queueDownload("./Enviroment/PinkCity.gif");
-ASSET_MANAGER.queueDownload("./Enviroment/woodenBarrel.png");
-ASSET_MANAGER.queueDownload("./Projectiles/fireball.png");
-ASSET_MANAGER.queueDownload("./Projectiles/Arrow.png");
-ASSET_MANAGER.queueDownload("./Projectiles/shadeStep.png");
-ASSET_MANAGER.queueDownload("./Projectiles/Cash.png");
+ASSET_MANAGER.queueDownload("./tanks/tankSprite.png");
 
 ASSET_MANAGER.downloadAll(function () {});
+
 
 window.onload = function() {
   const canvas = document.getElementById('gameWorld');
@@ -54,7 +31,7 @@ window.onload = function() {
 
   //start the Game
   //displayFightScene(canvas, context);
-  displayStartScene(canvas, context);
+  Start(canvas, context);
 
 
 

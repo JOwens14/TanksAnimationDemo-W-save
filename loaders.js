@@ -25,33 +25,18 @@ function createTiles(level, backgrounds) {
             }
         });
     });
-} 
+}
 
 // export
-function loadLevel(name) {
+function loadLevel() {
+  const level = new Level('default');
 
-    return Promise.all([
-        fetch(`./levels/${name}.json`)
-        .then(r => r.json()),
+  const backgroundLayer = createBackgroundLayer(level);   //background layer
+  level.comp.layers.push(backgroundLayer);
 
-        loadObjectSprites(),
+  const spriteLayer = createSpriteLayer(level.entities);    //entity layer
+  level.comp.layers.push(spriteLayer);
 
-        loadBackgroundSprites(name),
-    ])
-    .then(([levelSpec, objectSprites, backgroundSprites]) => {
-        const level = new Level(name);
+  return level;
 
-        createTiles(level, levelSpec.backgrounds);
-
-        const backgroundLayer = createBackgroundLayer(level, backgroundSprites);   //background layer
-        level.comp.layers.push(backgroundLayer);
-
-        const objectLayer = createObjectLayer(level, objectSprites);  //Level object layer
-        level.comp.layers.push(objectLayer);
-
-        const spriteLayer = createSpriteLayer(level.entities);    //entity layer
-        level.comp.layers.push(spriteLayer);
-
-        return level;
-    });
 }
