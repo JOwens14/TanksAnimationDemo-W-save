@@ -31,19 +31,19 @@ function createTank(name, choice) {
 
     // draw updates-------------------------------------------------------------
     Tank.up = function () {
-      Tank.drawX = 10 + 32;
+      Tank.drawX = 13 + 32;
       Tank.drawY = 1;
     }
     Tank.down = function () {
-      Tank.drawX = 10 + 64;
+      Tank.drawX = 13 + 64;
       Tank.drawY = 1 + 32;
     }
     Tank.left = function () {
-      Tank.drawX = 10;
+      Tank.drawX = 13;
       Tank.drawY = 1 + 32;
     }
     Tank.right = function () {
-      Tank.drawX = 10 + 96
+      Tank.drawX = 13 + 96
       Tank.drawY = 1;
     }
     //--------------------------------------------------------------------------

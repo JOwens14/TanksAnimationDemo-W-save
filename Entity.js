@@ -25,7 +25,7 @@ class Entity {
 				if (name.startsWith("CPU-")) {
 					this.isAgent = true;
 					this.agentManager = new agentManager(this);
-					console.log('cpu player made');
+					//console.log('cpu player made');
 				}
 		}
 
