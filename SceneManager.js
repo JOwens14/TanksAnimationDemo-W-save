@@ -7,8 +7,12 @@ function Start(canvas, context) {
   myCanvas = canvas;
   myContext = context;
   //display the Start Screen
+  var background = new Image();
+  background.onload = function () {context.drawImage(background, 0, 0);}
+  background.src = './Enviroment/green.jpg';
+
   var img = new Image();
-  img.onload = function () {context.drawImage(img, 400, 400);}
+  img.onload = function () {context.drawImage(img, 640 - 122, 360 - 73);}
   img.src = './Enviroment/TT-TanksLogo.png';
 
   //sound
