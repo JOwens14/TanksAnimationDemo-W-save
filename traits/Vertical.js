@@ -6,7 +6,7 @@ class Vertical extends Trait {
         super('vertical');
 
         this.dir = 0;
-        this.speed = 12000;
+        this.speed = 200;
     }
 
     update(entity, deltaTime) {

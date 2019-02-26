@@ -51,30 +51,9 @@ class Entity {
 				levelObject.removeEntity(this);
 			} else {
 				//character death handling / respawn
-
-				this.lives--; //decrement lives
-				if (this.lives > 0) {
-					this.damage = 0; //damage reset after death
 					this.vel.set(0,0); //sets Velocity to 0
 					this.go.dir = 0; //terminates accelleration from before death
-					this.Walking = false;
-					var offset = Math.floor(Math.random() * 4) * 40;
-					if (Math.floor(Math.random() * 2) > 0) offset = offset * -1;
-					console.log("Offset = " + offset);
 
-					this.pos.set(640 + offset, 80); //spawn in this location
-				} else {
-					levelObject.removeEntity(this);
-					playerNum--;
-					if (playerNum == 2) {
-						var pNum = levelObject.getLastCharacter().player;
-						window.setTimeout(function() {
-							var r = confirm("Player " + pNum + " Wins!");
-							location.reload();
-						}, 1000);
-
-					}
-				}
 			}
 		} else {
 			//console.log(this.Ename);

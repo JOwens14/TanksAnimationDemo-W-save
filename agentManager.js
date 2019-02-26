@@ -17,6 +17,7 @@ agentManager.prototype.update = function () {
     //console.log(this.agent.Ename + "s target is " + this.target.Ename);
     //console.log(this.target.Ename + " is " + this.targetDist + " units away");
     this.move();
+
 };
 
 

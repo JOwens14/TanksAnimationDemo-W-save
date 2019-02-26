@@ -6,11 +6,11 @@ class Go extends Trait {
         super('go');
 
         this.dir = 0;
-        this.speed = 12000;
+        this.speed = 200;
     }
 
     update(entity, deltaTime) {
-      
+
       //moves the character sprite
         entity.vel.x = this.speed * this.dir * deltaTime;
     }

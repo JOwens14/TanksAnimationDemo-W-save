@@ -36,25 +36,25 @@ function StartCombat(canvas, context) {
 
     Promise.all([
       createTank('CPU-1', 1),
-      createTank('CPU-2', 2),
-      createTank('CPU-3', 3),
-      createTank('CPU-4', 4),
+      createTank('CPU-2', 0),
+      createTank('CPU-3', 0),
+      createTank('CPU-4', 0),
       loadLevel(),
   ])
   .then(([T1, T2, T3, T4, level]) => {
       levelObject = level;
 
-      const input = setupKeyboard(T1);
-
       T1.pos.set(400, 400); //sets the Tank position
       T2.pos.set(900, 600);
-      T3.pos.set(700, 200);
-      T4.pos.set(100, 100);
+      T3.pos.set(600, 300);
+      T4.pos.set(500, 500);
 
       level.comp.layers.push(createCollisionLayer(level));
 
       level.addEntity(T1);
       level.addEntity(T2);
+      level.addEntity(T3);
+      level.addEntity(T4);
 
 
       const timer = new Timer(deltaTime);
