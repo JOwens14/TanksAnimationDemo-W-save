@@ -15,24 +15,29 @@ function Start(canvas, context) {
   img.onload = function () {context.drawImage(img, 640 - 122, 360 - 73);}
   img.src = './Enviroment/TT-TanksLogo.png';
 
+
   //sound
   mainMusic = new sound('./sound/MainTheme.wav');
   mainMusic.sound.volume = .04; //main theme volume
   mainMusic.sound.loop = true; //loops the main theme
   mainMusic.play(); //plays the main theme
 
-  // next screen --------------------
-  screenNextHandler = function(e) {
-    var key = e.which || e.keyCode;
-    if(key === 13) { // 13 is enter
-      mainMusic.stop(); //stops the main music
+  // // next screen --------------------
+  // screenNextHandler = function(e) {
+  //   var key = e.which || e.keyCode;
+  //   if(key === 13) { // 13 is enter
+  //     mainMusic.stop(); //stops the main music
+  //
+  //     StartCombat(canvas, context);
+  //     this.removeEventListener('keypress', screenNextHandler, false);
+  //   }
+  // };
+  // //move to the next scene
+  // this.addEventListener('keypress', screenNextHandler, false);
+  this.setTimeout(function() {
+    StartCombat(canvas, context);
+  }, 3000);
 
-      StartCombat(canvas, context);
-      this.removeEventListener('keypress', screenNextHandler, false);
-    }
-  };
-  //move to the next scene
-  this.addEventListener('keypress', screenNextHandler, false);
 
 }
 
@@ -55,6 +60,8 @@ function StartCombat(canvas, context) {
   ])
   .then(([T1, T2, level]) => {
       levelObject = level;
+
+      const input = setupKeyboard(T1);
 
       T1.pos.set(400, 400); //sets the Tank position
       T2.pos.set(900, 400);

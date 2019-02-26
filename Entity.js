@@ -25,6 +25,7 @@ class Entity {
 				if (name.startsWith("CPU-")) {
 					this.isAgent = true;
 					this.agentManager = new agentManager(this);
+					console.log('cpu player made');
 				}
 		}
 
@@ -41,7 +42,7 @@ class Entity {
 				if (this.isAgent && this.agentManager.delay === 0) {
 				this.agentManager.delay = 20;
 				this.agentManager.update();
-				//console.log(this.Ename);
+				console.log(this.Ename);
 			}
 		}
 
@@ -60,7 +61,7 @@ class Entity {
 					var offset = Math.floor(Math.random() * 4) * 40;
 					if (Math.floor(Math.random() * 2) > 0) offset = offset * -1;
 					console.log("Offset = " + offset);
-					
+
 					this.pos.set(640 + offset, 80); //spawn in this location
 				} else {
 					levelObject.removeEntity(this);
@@ -71,7 +72,7 @@ class Entity {
 							var r = confirm("Player " + pNum + " Wins!");
 							location.reload();
 						}, 1000);
-						
+
 					}
 				}
 			}

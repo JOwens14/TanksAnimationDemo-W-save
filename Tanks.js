@@ -4,17 +4,15 @@ var playerNum = 1;
 function createTank(name, choice) {
     const Tank = new Entity(name);
     Tank.type = 'player'
-    Tank.frameSize = 128;
-    Tank.size.set(28, 58); //set to actuall pixel size of Tank, determines collision box. kat is 18,29
+    Tank.frameSize = 32;
+    Tank.size.set(32, 32); //set to actuall pixel size of Tank, determines collision box. kat is 18,29
     Tank.origin = 'self';
     Tank.addTrait(new Velocity());
     Tank.addTrait(new Go());
-
+    Tank.addTrait(new Vertical());
     Tank.heading = 1;
-    Tank.Jumping = false;
 
     Tank.Moving = false;
-
     Tank.damage = 0;
 
     Tank.choice = choice || 0;
@@ -25,12 +23,12 @@ function createTank(name, choice) {
 
     Tank.updateAnimation = function () {
         //idle values
-        this.startX = 36;
-        this.startY = 42;
+        this.startX = 10;
+        this.startY = 0;
         this.FrameWidth = Tank.frameSize;
-        this.FrameHeight = Tank.frameSize /2 + 20;
-        this.FrameSpeed = 0.1;
-        this.FrameLength = 4;
+        this.FrameHeight = Tank.frameSize;
+        this.FrameSpeed = 1;
+        this.FrameLength = 1;
         this.FrameLoop = true;
         this.FrameReverse = false;
 
@@ -46,8 +44,6 @@ function createTank(name, choice) {
 
 
     }
-
-
 
     Tank.draw = function (context) {
         context.save();
