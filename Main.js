@@ -7,6 +7,7 @@ var CPUsEnabled = true;
 const ASSET_MANAGER = new AssetManager();
 //que all the asset files needed
 ASSET_MANAGER.queueDownload("./tanks/tankSprite.png");
+ASSET_MANAGER.queueDownload("./Projectiles/Arrow.png");
 
 ASSET_MANAGER.downloadAll(function () {});
 

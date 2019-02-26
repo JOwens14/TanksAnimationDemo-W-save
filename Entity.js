@@ -40,10 +40,15 @@ class Entity {
 			if (CPUsEnabled) {
 				if (this.isAgent) this.agentManager.delay--;
 				if (this.isAgent && this.agentManager.delay === 0) {
-				this.agentManager.delay = 20;
+				this.agentManager.delay = 100;
 				this.agentManager.update();
 				//console.log(this.Ename);
 			}
+		}
+
+		if (this.damage === 3) {
+			console.log('death');
+			levelObject.removeEntity(this);
 		}
 
 		if (this.inKillzone()) {
@@ -56,14 +61,6 @@ class Entity {
 
 			}
 		} else {
-			//console.log(this.Ename);
-			if (this.Ename === 'character') {
-				controllerUpdate(this, 0); //updating controller for character 1
-			}
-			else if (this.Ename === 'enemy') {
-				controllerUpdate(this, 1); //updating controller for enemy
-			}
-
     		this.traits.forEach(trait => {
 				//console.log(trait);
     			trait.update(this, deltaTime);
