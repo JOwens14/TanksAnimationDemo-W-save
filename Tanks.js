@@ -5,7 +5,7 @@ function createTank(name, choice) {
     const Tank = new Entity(name);
     Tank.team = choice;
     Tank.type = 'player'
-    Tank.size.set(64, 64); //set to actuall pixel size of Tank, determines collision box. kat is 18,29
+    Tank.size.set(40, 42); //set to actuall pixel size of Tank, determines collision box. kat is 18,29
     Tank.origin = 'self';
     Tank.addTrait(new Velocity());
     Tank.addTrait(new Go());
@@ -15,13 +15,13 @@ function createTank(name, choice) {
 
     Tank.damage = 0;
 
-    Tank.choice = choice * 64 || 0;
+    Tank.choice = choice * 66 || 0;
     Tank.player = playerNum;
     playerNum++;
 
-    Tank.drawX = 13 + (96);
-    Tank.drawY = 1;
-    Tank.drawSize = 32;
+    Tank.drawX = (96);
+    Tank.drawY = 0;
+    Tank.drawSize = 24;
     Tank.scale = 2;
 
 
@@ -32,20 +32,20 @@ function createTank(name, choice) {
 
     // draw updates-------------------------------------------------------------
     Tank.up = function () {
-      Tank.drawX = 13 + 32;
-      Tank.drawY = 1 + Tank.choice;
+      Tank.drawX = 32 + 2;
+      Tank.drawY = Tank.choice;
     }
     Tank.down = function () {
-      Tank.drawX = 13 + 64;
-      Tank.drawY = 1 + 32 + Tank.choice;
+      Tank.drawX = 64 + 2;
+      Tank.drawY = 32 + Tank.choice;
     }
     Tank.left = function () {
-      Tank.drawX = 13;
-      Tank.drawY = 1 + 32 + Tank.choice;
+      Tank.drawX = 0;
+      Tank.drawY = 32 + Tank.choice;
     }
     Tank.right = function () {
-      Tank.drawX = 13 + 96
-      Tank.drawY = 1 + Tank.choice;
+      Tank.drawX = 96;
+      Tank.drawY = Tank.choice;
     }
     //--------------------------------------------------------------------------
 
