@@ -5,8 +5,13 @@ function createProjectile(name, originEntity, direction) {
     Projectile.addTrait(new Velocity());
     Projectile.addTrait(new Throw());
     Projectile.addTrait(new Vertical());
+
+
     Projectile.vertical.speed = Projectile.throw.speed;
     Projectile.heading = originEntity.go.dir;
+    if (Projectile.heading === 0) {
+      Projectile.heading = 1;
+    }
 
     if (originEntity.facing === 0) {
       Projectile.throw.dir = originEntity.go.dir;
@@ -14,13 +19,6 @@ function createProjectile(name, originEntity, direction) {
       Projectile.vertical.dir = originEntity.vertical.dir;
     }
 
-    Projectile.upOrDown = 0;
-    if (direction === 'down') {
-      Projectile.upOrDown = -1;
-    }
-    if (direction === 'up') {
-      Projectile.upOrDown = 1;
-    }
     //console.log(originEntity.go.dir + originEntity.vertical.dir);
 
     if(name == 'arrow') {
@@ -35,40 +33,30 @@ function createProjectile(name, originEntity, direction) {
     }
 
     Projectile.updateAnimation = function() {
-        switch(name) {
-            case 'arrow':
-                Projectile.animation = new Animation(ASSET_MANAGER.getAsset(
-                    "./Projectiles/Arrow.png"), 0, 0, 400, 110, 1, 1, true, false);
-                break;
-        }
+      if (direction === 'up'){
+          console.log('fire up ');
+          Projectile.size.set(9,32);
+          Projectile.animation = new Animation(ASSET_MANAGER.getAsset(
+              "./Projectiles/ArrowUp.png"), 0, 0, 110, 400, 1, 1, true, false);
+      } else if (direction === 'down'){
+          Projectile.size.set(9,32);
+          Projectile.animation = new Animation(ASSET_MANAGER.getAsset(
+              "./Projectiles/ArrowDown.png"), 0, 0, 110, 400, 1, 1, true, false);
+      } else {
+          Projectile.size.set(32, 9);
+          Projectile.animation = new Animation(ASSET_MANAGER.getAsset(
+              "./Projectiles/Arrow.png"), 0, 0, 400, 110, 1, 1, true, false);
+          }
     }
 
     Projectile.draw = function (context) {
         context.save();
-        if (Projectile.upOrDown === 0) {
           if(Projectile.heading == 1) {
-              if(name == 'cash') {
-                  context.translate(20, 0);
-              } else {
-                  context.translate(-5, 0);
-              }
+            context.translate(-5, 0);
           } else {
-              if(name == 'shadeStep') {
-                  context.translate(10, 0)
-              } else if(name == 'fireball') {
-                  context.translate(30, 0)
-              } else if(name == 'cash') {
-                  context.translate(0, 0);
-              } else {
-                  context.translate(35, 0)
-              };
+            context.translate(35, 0);
           }
           context.scale(Projectile.heading, 1);
-        } else {
-          console.log('rotate');
-          context.rotate(Math.PI / 2);
-        }
-
 
 
         Projectile.animation.drawFrame(deltaTime, context, Projectile.heading * this.pos.x + 5, this.pos.y, .08);

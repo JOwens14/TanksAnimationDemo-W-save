@@ -103,7 +103,7 @@
             if (entity.type === 'projectile') {
               levelObject.removeEntity(entity);
               entityObject.damage++;
-              console.log('hit from left');
+              //console.log('hit from left');
               return;
             }
 
@@ -121,7 +121,7 @@
               if (entity.type === 'projectile') {
                 levelObject.removeEntity(entity);
                 entityObject.damage++;
-                console.log('hit from right');
+                //console.log('hit from right');
                 return;
               }
 

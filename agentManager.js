@@ -30,21 +30,21 @@ agentManager.prototype.attack = function () {
   var xDist = targetX - myX;
   var yDist = targetY - myY;
 
-  if (xDist > 0 && (yDist < 15 || yDist > -15)) {
+  if (xDist > 0 && (yDist < 15 && yDist > -15)) {
     //console.log('shoot 1');
-  //  this.agent.right();
+    this.right();
     ThrowProjectile('arrow', this.agent, 'right');
-  } else if (xDist < 0 && (yDist < 15 || yDist > -15)) {
+  } else if (xDist < 0 && (yDist < 15 && yDist > -15)) {
     //console.log('shoot 2');
-  //  this.agent.left();
+    this.left();
     ThrowProjectile('arrow', this.agent, 'left');
-  } else if (yDist > 0 && (xDist < 15 || xDist > -15)) {
-    console.log('shoot 3');
-    //this.agent.up();
+  } else if (yDist > 0 && (xDist < 15 && xDist > -15)) {
+    //console.log('shoot 3');
+    this.up()
     ThrowProjectile('arrow', this.agent, 'up');
-  } else if (yDist < 0 && (xDist < 15 || xDist > -15)) {
-    console.log('shoot 4');
-    //this.agent.down();
+  } else if (yDist < 0 && (xDist < 15 && xDist > -15)) {
+    //console.log('shoot 4');
+    this.down()
     ThrowProjectile('arrow', this.agent, 'down');
   }
 
@@ -167,25 +167,25 @@ agentManager.prototype.selectTarget = function () {
 agentManager.prototype.right = function () {
         this.agent.go.dir = 1;
         this.agent.right();
-        tank.agent.facing = 0;
+        this.agent.facing = 0;
       }
 
 agentManager.prototype.left = function () {
         this.agent.go.dir = -1;
         this.agent.left();
-        tank.agent.facing = 0;
+        this.agent.facing = 0;
 }
 
 agentManager.prototype.up = function () {
         this.agent.vertical.dir = -1;
         this.agent.up();
-        tank.agent.facing = -1;
+        this.agent.facing = -1;
 }
 
 agentManager.prototype.down = function () {
         this.agent.vertical.dir = 1;
         this.agent.down();
-        tank.agent.facing = 1;
+        this.agent.facing = 1;
 }
 /////////////////////////////////////////////////////////////////////////////////////////
 
@@ -193,21 +193,25 @@ function dirPicker(tank) { //picks the item to spawn
   choice = getRandomInt(1, 5); //between 1 and number of items + 1
   if (choice === 1) {
     tank.agent.up();
+    tank.agent.go.dir = 0;
     tank.agent.vertical.dir = -1;
     tank.agent.facing = -1;
   }
   if (choice === 2) {
     tank.agent.down();
+    tank.agent.go.dir = 0;
     tank.agent.vertical.dir = 1;
     tank.agent.facing = 1;
   }
   if (choice === 3) {
     tank.agent.left();
+    tank.agent.vertical.dir = 0;
     tank.agent.go.dir = -1;
     tank.agent.facing = 0;
   }
   if (choice === 4) {
     tank.agent.right();
+    tank.agent.vertical.dir = 0;
     tank.agent.go.dir = 1;
     tank.agent.facing = 0;
   }
