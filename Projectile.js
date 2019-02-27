@@ -16,7 +16,7 @@ function createProjectile(name, originEntity, direction) {
     if (originEntity.facing === 0) {
       Projectile.throw.dir = originEntity.go.dir;
     } else {
-      Projectile.vertical.dir = originEntity.vertical.dir;
+      Projectile.vertical.dir = -originEntity.vertical.dir;
     }
 
     //console.log(originEntity.go.dir + originEntity.vertical.dir);

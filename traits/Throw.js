@@ -3,7 +3,7 @@ class Throw extends Trait {
         super('throw');
 
         this.dir = 0;
-        this.speed = 15000;  //should be about 10,000ish
+        this.speed = 12000;  //should be about 10,000ish
         this.v = 0;
     }
 

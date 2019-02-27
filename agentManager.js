@@ -189,8 +189,8 @@ agentManager.prototype.down = function () {
 }
 /////////////////////////////////////////////////////////////////////////////////////////
 
-function dirPicker(tank) { //picks the item to spawn
-  choice = getRandomInt(1, 5); //between 1 and number of items + 1
+function dirPicker(tank, choice) { //picks the item to spawn
+  choice = choice || getRandomInt(1, 5); //between 1 and number of items + 1
   if (choice === 1) {
     tank.agent.up();
     tank.agent.go.dir = 0;
