@@ -14,11 +14,17 @@ function createProjectile(name, originEntity, direction) {
       Projectile.vertical.dir = originEntity.vertical.dir;
     }
 
-
+    Projectile.upOrDown = 0;
+    if (direction === 'down') {
+      Projectile.upOrDown = -1;
+    }
+    if (direction === 'up') {
+      Projectile.upOrDown = 1;
+    }
     //console.log(originEntity.go.dir + originEntity.vertical.dir);
 
     if(name == 'arrow') {
-        Projectile.size.set(20, 9);
+        Projectile.size.set(32, 9);
         Projectile.pos.set(originEntity.pos.x, originEntity.pos.y + 30);
     }
 
@@ -32,44 +38,41 @@ function createProjectile(name, originEntity, direction) {
         switch(name) {
             case 'arrow':
                 Projectile.animation = new Animation(ASSET_MANAGER.getAsset(
-                    "./Projectiles/Arrow.png"), 0, 0, 33, 9, 1, 1, true, false);
+                    "./Projectiles/Arrow.png"), 0, 0, 400, 110, 1, 1, true, false);
                 break;
         }
     }
 
     Projectile.draw = function (context) {
         context.save();
-        if(Projectile.heading == 1) {
-            if(name == 'cash') {
-                context.translate(20, 0);
-            } else {
-                context.translate(-5, 0);
-            }
+        if (Projectile.upOrDown === 0) {
+          if(Projectile.heading == 1) {
+              if(name == 'cash') {
+                  context.translate(20, 0);
+              } else {
+                  context.translate(-5, 0);
+              }
+          } else {
+              if(name == 'shadeStep') {
+                  context.translate(10, 0)
+              } else if(name == 'fireball') {
+                  context.translate(30, 0)
+              } else if(name == 'cash') {
+                  context.translate(0, 0);
+              } else {
+                  context.translate(35, 0)
+              };
+          }
+          context.scale(Projectile.heading, 1);
         } else {
-            if(name == 'shadeStep') {
-                context.translate(10, 0)
-            } else if(name == 'fireball') {
-                context.translate(30, 0)
-            } else if(name == 'cash') {
-                context.translate(0, 0);
-            } else {
-                context.translate(25, 0)
-            };
+          console.log('rotate');
+          context.rotate(Math.PI / 2);
         }
-        context.scale(Projectile.heading, 1);
-        if(name == 'fireball') {
-            Projectile.animation.drawFrame(deltaTime, context, (Projectile.heading * this.pos.x - Projectile.size.x/2), (this.pos.y - Projectile.size.y/2), 1/8);
-        } else if (name == 'arrow') {
-            Projectile.animation.drawFrame(deltaTime, context, Projectile.heading * this.pos.x, this.pos.y);
-        } else if (name == 'trippleArrow') {
-            Projectile.animation.drawFrame(deltaTime, context, Projectile.heading * this.pos.x, this.pos.y);
-            Projectile.animation.drawFrame(deltaTime, context, Projectile.heading * this.pos.x, this.pos.y + 12);
-            Projectile.animation.drawFrame(deltaTime, context, Projectile.heading * this.pos.x, this.pos.y + 24);
-        } else if (name == 'shadeStep') {
-            Projectile.animation.drawFrame(deltaTime, context, Projectile.heading * this.pos.x, this.pos.y);
-        } else if (name == 'cash') {
-            Projectile.animation.drawFrame(deltaTime, context, Projectile.heading * this.pos.x - 20, this.pos.y);
-        }
+
+
+
+        Projectile.animation.drawFrame(deltaTime, context, Projectile.heading * this.pos.x + 5, this.pos.y, .08);
+
         context.restore();
     }
 
