@@ -33,13 +33,13 @@
           if (entity.pos.x > 1180) {
             entity.vel.x = 0;
             entity.pos.x = entity.pos.x;
-            entity.go.dir = -entity.go.dir;
+            entity.go.dir = -1;
             entity.left();
           }
           if (entity.pos.x < 100) {
             entity.vel.x = 0;
             entity.pos.x = entity.pos.x;
-            entity.go.dir = -entity.go.dir;
+            entity.go.dir = 1;
             entity.right();
           }
           if (entity.pos.y > 620) {

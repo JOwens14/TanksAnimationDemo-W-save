@@ -57,6 +57,10 @@ agentManager.prototype.move = function () {
     var myX = this.agent.pos.x;
     var myY = this.agent.pos.y;
 
+    if (this.target === undefined) {
+      console.log('Team: '+ this.agent.team + ' WINS!');
+      return;
+    }
     var targetX = this.target.pos.x;
     var targetY = this.target.pos.y;
 
