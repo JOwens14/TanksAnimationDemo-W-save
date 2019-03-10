@@ -25,9 +25,9 @@ window.onload = function() {
   var socket = io.connect("http://24.16.255.56:8888");
 
   socket.on("load", function (data) {
-      //console.log(data.data);
+      //console.log(data);
       score = data.data;
-      levelObject.levelLoad(saveState);
+      //levelObject.levelLoad(saveState);
   });
 
   var text = document.getElementById("text");
@@ -39,7 +39,7 @@ window.onload = function() {
     saveState = levelObject.levelSave();
     //console.log(saveState);
     text.innerHTML = "Saved."
-    socket.emit("save", { studentname: "Jacob Owens", statename: "aState", data: score });
+    socket.emit("save", { studentname: "Jacob Owens", statename: "aState", data: score});
   };
 
   loadButton.onclick = function () {

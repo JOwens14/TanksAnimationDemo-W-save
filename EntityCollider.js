@@ -95,7 +95,7 @@
 //YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY
 
 //XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-        if (entity.vel.x > 0) {
+        if (entity.vel.x > 0 || entity.vel.y > 0) {
           if (entity.pos.x + entity.size.x >= entityObject.pos.x && entity.pos.x + entity.size.x <= entityObject.pos.x + entityObject.size.x/2
           && (entity.pos.y >= entityObject.pos.y + entityObject.size.y/2 && entity.pos.y <= entityObject.pos.y + entityObject.size.y ||
             entity.pos.y + entity.size.y >= entityObject.pos.y && entity.pos.y + entity.size.y <= entityObject.pos.y + entityObject.size.y/2)) { // /3
@@ -113,7 +113,7 @@
             entityObject.vel.x = entity.vel.x/2;
 
           }
-        } else if (entity.vel.x < 0) {
+        } else if (entity.vel.x < 0 || entity.vel.y < 0) {
             if (entity.pos.x >= entityObject.pos.x + entityObject.size.x/2 && entity.pos.x <= entityObject.pos.x + entityObject.size.x
               && (entity.pos.y >= entityObject.pos.y + entityObject.size.y/2 && entity.pos.y <= entityObject.pos.y + entityObject.size.y ||
                 entity.pos.y + entity.size.y >= entityObject.pos.y && entity.pos.y + entity.size.y <= entityObject.pos.y + entityObject.size.y/2)) { //division divides the char in hald and then segments further to catch between frames
