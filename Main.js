@@ -13,15 +13,20 @@ ASSET_MANAGER.queueDownload("./Projectiles/ArrowDown.png");
 
 ASSET_MANAGER.downloadAll(function () {});
 
+var saveState;
+var score = 0;
 
 window.onload = function() {
   const canvas = document.getElementById('gameWorld');
   const context = canvas.getContext('2d');
   //-----------------------------------------------------------------------------------------SAVE/Loaded
+
+
   var socket = io.connect("http://24.16.255.56:8888");
 
   socket.on("load", function (data) {
-      console.log(data);
+      //console.log(data.data);
+      score = data.data;
   });
 
   var text = document.getElementById("text");
@@ -30,14 +35,18 @@ window.onload = function() {
 
   saveButton.onclick = function () {
     console.log("save");
+    saveState = levelObject.levelSave();
+    s = JSON.stringify(saveState);
+    //console.log(saveState);
     text.innerHTML = "Saved."
-    socket.emit("save", { studentname: "Jacob Owens", statename: "aState", data: "try" });
+    socket.emit("save", { studentname: "Jacob Owens", statename: "aState", data: score });
   };
 
   loadButton.onclick = function () {
     console.log("load");
     text.innerHTML = "Loaded."
-    socket.emit("load", { studentname: "Jacob Owens", statename: "aState" });
+    socket.emit("load", { studentname: "Jacob Owens", statename: "aState"});
+    //console.log(data);
   };
 
   //----------------------------------------------------------------------------------------------------

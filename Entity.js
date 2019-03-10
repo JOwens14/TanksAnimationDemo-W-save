@@ -48,6 +48,7 @@ class Entity {
 
 		if (this.damage === 3) {
 			console.log('death');
+			score++;
 			levelObject.removeEntity(this);
 		}
 

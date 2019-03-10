@@ -85,6 +85,8 @@ function StartCombat(canvas, context) {
       timer.update = function update(deltaTime) {
           level.update(deltaTime);
           level.comp.draw(context);
+          context.font = "20px Georgia";
+          context.strokeText('Score: ' + score, 1150, 50);
       }
       timer.start();
       });

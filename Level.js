@@ -28,6 +28,7 @@ class Level {
     removeEntity(entity) {
       this.entities.delete(entity);
       this.entityCollider.removeEntityCollider(entity);
+      
     }
 
     getLastCharacter() {
@@ -40,12 +41,18 @@ class Level {
       return e;
     }
 
+    levelSave() {
+      return this.entities;
+    }
+
+    levelLoad(load) {
+      this.entities = load;
+    }
 
     update(deltaTime) {
         this.entities.forEach(entity => {
             entity.update(deltaTime);
             //console.log('update');
-
             entity.pos.x += entity.vel.x * deltaTime;
             this.tileCollider.checkX(entity);
 
