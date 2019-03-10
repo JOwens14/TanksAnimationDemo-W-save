@@ -27,6 +27,7 @@ window.onload = function() {
   socket.on("load", function (data) {
       //console.log(data.data);
       score = data.data;
+      levelObject.levelLoad(saveState);
   });
 
   var text = document.getElementById("text");
@@ -36,7 +37,6 @@ window.onload = function() {
   saveButton.onclick = function () {
     console.log("save");
     saveState = levelObject.levelSave();
-    s = JSON.stringify(saveState);
     //console.log(saveState);
     text.innerHTML = "Saved."
     socket.emit("save", { studentname: "Jacob Owens", statename: "aState", data: score });
