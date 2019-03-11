@@ -37,15 +37,15 @@ function createProjectile(name, originEntity, direction) {
           console.log('fire up ');
           Projectile.size.set(9,32);
           Projectile.animation = new Animation(ASSET_MANAGER.getAsset(
-              "./Projectiles/ArrowUp.png"), 0, 0, 110, 400, 1, 1, true, false);
+              "./Projectiles/arrowUp.png"), 0, 0, 110, 400, 1, 1, true, false);
       } else if (direction === 'down'){
           Projectile.size.set(9,32);
           Projectile.animation = new Animation(ASSET_MANAGER.getAsset(
-              "./Projectiles/ArrowDown.png"), 0, 0, 110, 400, 1, 1, true, false);
+              "./Projectiles/arrowDown.png"), 0, 0, 110, 400, 1, 1, true, false);
       } else {
           Projectile.size.set(32, 9);
           Projectile.animation = new Animation(ASSET_MANAGER.getAsset(
-              "./Projectiles/Arrow.png"), 0, 0, 400, 110, 1, 1, true, false);
+              "./Projectiles/arrow.png"), 0, 0, 400, 110, 1, 1, true, false);
           }
     }
 
