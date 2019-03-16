@@ -30,15 +30,13 @@ function StartCombat(canvas, context) {
     Promise.all([
       createTank('CPU-1', 1),
       createTank('CPU-2', 1),
-      createTank('CPU-3', 1),
-      createTank('CPU-4', 1),
-      createTank('CPU-5', 0),
-      createTank('CPU-6', 0),
-      createTank('CPU-7', 0),
-      createTank('CPU-8', 0),
+      createTank('CPU-3', 0),
+      createTank('CPU-4', 0),
+
       loadLevel(),
   ])
-  .then(([T1, T2, T3, T4, T5, T6, T7, T8, level]) => {
+  .then(([T1, T2, T3, T4, level]) => {
+
       levelObject = level;
 
       T1.pos.set(400, 400); //sets the Tank position
@@ -46,10 +44,6 @@ function StartCombat(canvas, context) {
       T3.pos.set(600, 300);
       T4.pos.set(500, 500);
 
-      T5.pos.set(100, 400);
-      T6.pos.set(600, 600);
-      T7.pos.set(300, 300);
-      T8.pos.set(200, 500);
 
       level.comp.layers.push(createCollisionLayer(level));
 
@@ -57,10 +51,12 @@ function StartCombat(canvas, context) {
       level.addEntity(T2);
       level.addEntity(T3);
       level.addEntity(T4);
-      level.addEntity(T5);
-      level.addEntity(T6);
-      level.addEntity(T7);
-      level.addEntity(T8);
+
+      Tank1=T1;
+      Tank2=T2;
+      Tank3=T3;
+      Tank4=T4;
+
 
 
       resethandler = function(e) { //resets tanks positions and alive
@@ -87,6 +83,7 @@ function StartCombat(canvas, context) {
           level.comp.draw(context);
           context.font = "20px Georgia";
           context.strokeText('Score: ' + score, 1150, 50);
+          levelObject = level;
       }
       timer.start();
       });
